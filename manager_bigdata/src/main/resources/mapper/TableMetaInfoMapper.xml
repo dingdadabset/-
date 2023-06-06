@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.TableMetaInfoMapper">
+    <!--    <select id="getTableMetaInfoListLastDt" resultMap="tableMetaInfoMap">
+            select   te.id te_id,  te.create_time as   te_create_time,    tm.*,te.*  from table_meta_info tm join table_meta_info_extra  te on tm.table_name =te.table_name and tm.schema_name=te.schema_name
+                 where   create_dt = (select  max(tm1.create_dt) from table_meta_info  tm1 group by tm1.table_name,tm1.schema_name having tm.schema_name=tm1.schema_name and tm.table_name=tm1.table_name)
+        </select>-->
+    <resultMap id="tableMetaInfoMap" type="org.example.entity.TableMetaInfo" autoMapping="true">
+        <result column="id" property="id"></result>
+        <association property="tableMetaInfoExtra" javaType="org.example.entity.TableMetaInfoExtra" autoMapping="true">
+            <result column="te_id" property="id"></result>
+            <result column="te_create_time" property="createTime"></result>
+        </association>
+    </resultMap>
+
+</mapper>
